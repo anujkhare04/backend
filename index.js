@@ -10,6 +10,10 @@ app.get('/', (req, res) => {
   res.send('Hello, From backend');
 });
 
+app.get('/health', (req, res) => {
+  res.send('Hello, From backend is fine Anuj');
+});
+
 const PORT = process.env.PORT || 5000;      
 
 
