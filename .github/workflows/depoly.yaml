@@ -7,20 +7,21 @@ on:
 
 jobs:
    deploy:
-      runs_on:ubuntu-latest 
-   steps:
-      - name: checkout code 
-        uses: actions/checkout@v6
-      - name : depoly via ssh
-        uses : appleboy/ssh-action@v1
-        with : 
-           host: ${{secrets.SSH_HOST}}
-           username: ubuntu
-           key :${{secrets.SSH_KEY}}
-           script:
-             cd ~/backend
-             git pull
-             sudo docker down
-             sudo docker compose up -d --build 
+    runs-on:ubuntu-latest 
+
+     steps:
+        - name: checkout code 
+           uses: actions/checkout@v6
+        - name : depoly via ssh
+           uses : appleboy/ssh-action@v1
+           with : 
+             host: ${{secrets.SSH_HOST}}
+             username: ubuntu
+             key :${{secrets.SSH_KEY}}
+             script:
+               cd ~/backend
+               git pull
+               sudo docker down
+               sudo docker compose up -d --build 
 
               
